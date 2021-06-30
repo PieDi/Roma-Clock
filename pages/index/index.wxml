@@ -1,0 +1,74 @@
+<!--index.wxml-->
+<wxs module="common" src="./index.wxs"></wxs>
+<view class="container">
+  <!-- <view class="userinfo">
+    <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
+      <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName"></open-data>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view> -->
+
+  <view class="home">
+    <!-- 月 -->
+    <view class="box-wrapper">
+      <view class="circle-box month-box" style="transform: {{common.boxStyle.transform(monthsDeg)}}">
+        <span wx:for="{{monthTexts}}" wx:key='index' wx:for-index="index" wx:for-item="item"
+          class="circle-span {{index === currentMonths - 1 ? 'active': ''}}"
+          style="top: {{common.spanStyle.top(boxSize.months, monthTexts, index)}};left: {{common.spanStyle.left(boxSize.months, monthTexts, index)}};transform: {{common.spanStyle.transform(monthTexts, index)}};"
+          >{{ item }}</span>
+      </view>
+    </view>
+    <!-- 日 -->
+    <view class="box-wrapper">
+      <view class="circle-box day-box" style="transform: {{common.boxStyle.transform(daysDeg)}}">
+        <span wx:for="{{dayTexts}}" wx:key='index' wx:for-index="index" wx:for-item="item"
+          class="circle-span {{index === currentDays - 1 ? 'active': ''}}"
+          style="top: {{common.spanStyle.top(boxSize.days, dayTexts, index)}};left: {{common.spanStyle.left(boxSize.days, dayTexts, index)}};transform: {{common.spanStyle.transform(dayTexts, index)}};"
+        >{{ item }}</span>
+      </view>
+    </view>
+    <!-- 小时 -->
+    <view class="box-wrapper">
+      <view class="circle-box  hour-box" style="transform: {{common.boxStyle.transform(hoursDeg)}}">
+        <span wx:for="{{hourTexts}}" wx:key='index' wx:for-index="index" wx:for-item="item"
+          class="circle-span {{index === currentHours - 1 ? 'active': ''}}"
+          style="top: {{common.spanStyle.top(boxSize.hours, hourTexts, index)}};left: {{common.spanStyle.left(boxSize.hours, hourTexts, index)}};transform: {{common.spanStyle.transform(hourTexts, index)}};"
+        >{{ item }}</span>
+      </view>
+    </view>
+    <!-- 分 -->
+    <view class="box-wrapper">
+      <view class="circle-box minute-box" style="transform: {{common.boxStyle.transform(minutesDeg)}}">
+        <span wx:for="{{minuteTexts}}" wx:key='index' wx:for-index="index" wx:for-item="item"
+          class="circle-span {{index === currentMinutes ? 'active': ''}}"
+          style="top: {{common.spanStyle.top(boxSize.minutes, minuteTexts, index)}};left: {{common.spanStyle.left(boxSize.minutes, minuteTexts, index)}};transform: {{common.spanStyle.transform(minuteTexts, index)}};"
+        >{{ item }}</span>
+      </view>
+    </view>
+
+    <!-- 秒 -->
+    <view class="box-wrapper">
+      <view  class="circle-box second-box" style="transform: {{common.boxStyle.transform(secondsDeg)}}">
+        <span wx:for="{{secondTexts}}" wx:key='index' wx:for-index="index" wx:for-item="item"
+          class="circle-span {{index === currentSeconds ? 'active': ''}}"
+          style="top: {{common.spanStyle.top(boxSize.seconds, secondTexts, index)}};left: {{common.spanStyle.left(boxSize.seconds, secondTexts, index)}};transform: {{common.spanStyle.transform(secondTexts, index)}};"
+        >{{ item }}</span>
+      </view>
+    </view>
+
+  </view>
+</view>

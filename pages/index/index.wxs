@@ -1,0 +1,42 @@
+var boxStyle = {
+    transform: function (deg) {
+        return 'rotate(-' + deg + 'deg)' 
+    }
+}
+var getPerDeg = function(texts) {
+    return 360 / texts.length
+}
+var getHypotenuse = function(long, angle) {
+    // 获得弧度
+    var radian = 2 * Math.PI / 360 * angle
+    return {
+        a: Math.sin(radian) * long, // 邻边
+        b: Math.cos(radian) * long // 对边
+    }
+}
+var spanStyle = {
+    top: function(size, datas, i) {
+        var long = size / 2 // 半径
+        var deg = getPerDeg(datas) // 元素之间的间隔度数
+        var angle = i * deg // 角度
+        var hypotenuse = getHypotenuse(long, angle)
+        return hypotenuse.a + long + 'px'
+    },
+    left: function(size, datas, i) {
+        var long = size / 2 // 半径
+        var deg = getPerDeg(datas) // 元素之间的间隔度数
+        var angle = i * deg // 角度
+        var hypotenuse = getHypotenuse(long, angle)
+        return hypotenuse.b + long + 'px'
+    }
+    transform: function(datas, i) {
+        var deg = getPerDeg(datas) // 元素之间的间隔度数
+        var rotateDeg = deg * i
+        return 'rotate(' + rotateDeg + 'deg)'  
+    }
+}
+
+module.exports = {
+    boxStyle: boxStyle,
+    spanStyle: spanStyle
+}
